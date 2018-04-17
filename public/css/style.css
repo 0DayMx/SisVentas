@@ -1,0 +1,92 @@
+/* Etiqueta para formularios */
+.help-block-label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #434343;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* Color en td para tabla informativa */
+.tdgris
+{
+	background-color: #F0F0F0;
+}
+
+
+/* Tabla detalle del cliente */
+/* table bordered */
+.table-bordered-detalle th,
+.table-bordered-detalle td {
+    border: 1px solid #BDBDBD !important;
+}
+
+/* table bordered */
+.table-bordered-detalle th {
+    background-color: #E6E6E6;
+}
+
+
+/* Tablas azul cielo */
+/* table striped (linea gris en tablas) */
+.table-striped-index > tbody > tr:nth-of-type(odd) {
+  background-color: #CAEDFC;
+}
+
+/* table hover (al pasar el mouse) */
+.table-hover-index > tbody > tr:hover {
+  background-color: #E8E9E9;
+}
+
+/* table bordered */
+.table-bordered-index th,
+.table-bordered-index td {
+    border: 1px solid #A0E4F4 !important;
+}
+
+.table-head-index
+{
+  font-size: 14px;
+  color: #1C3E4C;
+  background-color: #FFF;
+}
+
+.table-body-index
+{
+    font-size: 12px;
+    background-color: #FFF; 
+}
+/* ------------------------------------------------------- */
+
+
+
+/* Tablas para detalle de un registro */
+/* table striped (linea gris en tablas) */
+.table-striped-index > tbody > tr:nth-of-type(odd) {
+  background-color: #CAEDFC;
+}
+
+/* table hover (al pasar el mouse) */
+.table-hover-index > tbody > tr:hover {
+  background-color: #E8E9E9;
+}
+
+/* table bordered */
+.table-bordered-index th,
+.table-bordered-index td {
+    border: 1px solid #A0E4F4 !important;
+}
+
+.table-head-index
+{
+  font-size: 14px;
+  color: #1C3E4C;
+  background-color: #FFF;
+}
+
+.table-body-index
+{
+    font-size: 12px;
+    background-color: #FFF; 
+}
