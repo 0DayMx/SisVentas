@@ -18,6 +18,10 @@ use sisventas\Modelos\Inst\ProcessAgregaArticulo;
 
 class AgregaArticuloController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function create( $id )
     {
         $cotizacion = Cotizacion::findOrFail( $id );

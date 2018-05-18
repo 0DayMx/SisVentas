@@ -16,7 +16,11 @@ use sisventas\Modelos\Compras\Proveedor;
 
 class LoteController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $lotes = Lote::select(

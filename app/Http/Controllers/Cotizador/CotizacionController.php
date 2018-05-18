@@ -18,7 +18,10 @@ use sisventas\Modelos\Inst\ProcessCotizacion;
 
 class CotizacionController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $cotizaciones = Cotizacion::select(

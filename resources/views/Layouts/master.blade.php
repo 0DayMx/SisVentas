@@ -37,16 +37,16 @@
 
 </head>
 
-<body class="hold-transition skin-green-light sidebar-mini">
+<body class="hold-transition skin-yellow-light sidebar-mini">
     <div class="wrapper">
       	<header class="main-header">
 
       		<!-- Logo -->
         	<a href="#" class="logo">
         		<!-- mini logo for sidebar mini 50x50 pixels -->
-          		<span class="logo-mini"><b>CR</b>M</span>
+          		<span class="logo-mini"><b>ER</b>P</span>
           		<!-- logo for regular state and mobile devices -->
-          		<span class="logo-lg"><b>CRM0Day</b></span>
+          		<span class="logo-lg"><b>ERP0Day</b></span>
         	</a>
 
         	<!-- Header Navbar: style can be found in header.less -->
@@ -64,16 +64,16 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-yellow">Online</small>
-                  <span class="hidden-xs">0DAY</span>
+                  <small class="bg-green-active">Online</small>
+                  <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                      <img src="http://oday.mx/images/0Day.png" class="img-thumbnail" alt="User Image">
                     <p>
-                      0DAY
-                      <small>CRM  | < /0Day > </small>
+                      Usuario : {{ Auth::user()->name }}
+                      <small>ERP  | < /0Day > </small>
                     </p>
 
                   </li>

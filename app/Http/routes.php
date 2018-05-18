@@ -13,8 +13,9 @@
 
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth/login');
 });
+Route::resource('seguridad/usuario','UsuarioController');
 
 // --- ENRUTADO ARTÍCULOS
 Route::group( [ 'prefix' => 'articulos' ], function(){
@@ -81,3 +82,7 @@ Route::post( 'cotizacion/{id}/agrega_articulo','Cotizador\AgregaArticuloControll
 Route::post( 'cotizacion/{id}/destroy_articulo','Cotizador\AgregaArticuloController@destroy' );
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

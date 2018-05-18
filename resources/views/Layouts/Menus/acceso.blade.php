@@ -6,7 +6,8 @@
     </a>
     
     <ul class="treeview-menu">
-    	<li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+    	<li><a href="{!! url('seguridad/usuario') !!}"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+
     </ul>
       
 </li>

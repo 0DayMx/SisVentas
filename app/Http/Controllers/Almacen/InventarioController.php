@@ -12,7 +12,11 @@ use sisventas\Modelos\Almacen\Lote;
 
 class InventarioController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //

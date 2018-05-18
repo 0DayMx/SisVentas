@@ -14,7 +14,10 @@ use sisventas\Modelos\Compras\Proveedor;
 
 class ProveedorController extends Controller
 {
-   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $proveedores = Proveedor::all();

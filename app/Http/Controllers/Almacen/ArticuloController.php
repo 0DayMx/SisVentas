@@ -16,7 +16,10 @@ use sisventas\Modelos\Almacen\Presentacion;
 
 class ArticuloController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $articulos = Articulo::select(

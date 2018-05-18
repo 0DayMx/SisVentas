@@ -14,6 +14,10 @@ use sisventas\Modelos\Almacen\Presentacion;
 
 class PresentacionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $presentaciones = Presentacion::all();
