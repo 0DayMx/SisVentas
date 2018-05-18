@@ -11,18 +11,24 @@
 	<title>@yield('title')</title>
 
 	  <!-- Select en lista desplegable -->
-    {!! Html::style('select2/css/select2.min.css') !!}
+    {!! Html::style( 'select2/css/select2.min.css' ) !!}
 
-    {!! Html::style('css/bootstrap.min.css') !!}
-    {!! Html::style('css/font-awesome.css') !!}
-    {!! Html::style('css/AdminLTE.min.css') !!}
+    {!! Html::style( 'css/bootstrap.min.css' ) !!}
+    {!! Html::style( 'css/font-awesome.css' ) !!}
+    {!! Html::style( 'css/AdminLTE.min.css' ) !!}
 
     <!-- Datatables -->
-    {!! Html::style('dataTables.net-bs/css/dataTables.bootstrap.min.css') !!}
+    {!! Html::style( 'dataTables.net-bs/css/dataTables.bootstrap.min.css' ) !!}
 
-    {!! Html::style('css/_all-skins.min.css') !!}
+    {!! Html::style( 'css/_all-skins.min.css' ) !!}
 
-    {!! Html::style('css/style.css') !!}    
+		<!-- Bootstrap Material Datetime Picker Css (Modal calendario) -->
+    {!! Html::style( 'plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css' ) !!}
+
+     <!-- Sweetalert Css -->
+    {!! Html::style( 'plugins/sweetalert/sweetalert.css' ) !!}
+
+    {!! Html::style( 'css/style.css' ) !!}    
 
 	  <link rel="shortcut icon" type="image/png" href="{{{ asset('favicon.ico') }}}"> 
 
@@ -98,9 +104,10 @@
             		    <li class="header"></li>            
             
             		    <!-- Se incluyen los Menús -->
-            		    @include('Layouts.Menus.almacen')
-            		    @include('Layouts.Menus.compras')
-            		    @include('Layouts.Menus.ventas')
+            		    @include( 'Layouts.Menus.almacen' )
+            		    @include( 'Layouts.Menus.compras' )
+            		    @include( 'Layouts.Menus.ventas' )
+										@include( 'Layouts.Menus.cotizador' )
             		    @include('Layouts.Menus.acceso')
             
              		    <li>
@@ -146,25 +153,39 @@
     </div><!-- div wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    {!! Html::script('js/jQuery-2.1.4.min.js') !!}
-    {!! Html::script('js/bootstrap.min.js') !!}
-    {!! Html::script('js/app.min.js') !!}
+    {!! Html::script( 'js/jQuery-2.1.4.min.js' ) !!}
+    {!! Html::script( 'js/bootstrap.min.js' ) !!}
+    {!! Html::script( 'js/app.min.js' ) !!}
+
+    <!-- SweetAlert Plugin Js -->
+    {!! Html::script( 'plugins/sweetalert/sweetalert.min.js' ) !!}    
+    @include( 'sweet::alert' )
+
+		<!-- datetime picker (Modal calendario)-->
+		{!! Html::script( 'plugins/momentjs/moment.js' ) !!}
+    {!! Html::script( 'plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js' ) !!}
 
     <!-- Select en lista desplegable  -->
-    {!! Html::script('select2/js/select2.full.min.js') !!}
+    {!! Html::script( 'select2/js/select2.full.min.js' ) !!}
+
+    <!-- ids tablas jquery -->
+    {!! Html::script( 'js/custom_dataTable.js' ) !!}
+
+    <!-- Sweet alerts -->
+    {!! Html::script( 'js/custom_sweet.js' ) !!}
 
     <!-- Datatables -->
-    {!! Html::script('dataTables.net-bs/js/jquery.dataTables.js') !!}   
-    {!! Html::script('dataTables.net-bs/js/dataTables.bootstrap.min.js') !!}
+    {!! Html::script( 'dataTables.net-bs/js/jquery.dataTables.js' ) !!}   
+    {!! Html::script( 'dataTables.net-bs/js/dataTables.bootstrap.min.js' ) !!}
    
 
     <script>
         $(function () {
             //Initialize Select2 Elements
-            $('.select2').select2()
+            $( '.select2' ).select2()
 
-            $(document).ready(function(){
-                $('[data-toggle="tooltip"]').tooltip();
+            $( document ).ready( function(){
+                $( '[data-toggle="tooltip"]' ).tooltip();
             });
 
         });

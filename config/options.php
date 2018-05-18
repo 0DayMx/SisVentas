@@ -67,12 +67,35 @@ return [
 	'tipo_moneda' => [
 
 		'' => 'Selecciona una opción',
-		'1' => 'Dolar Americano',
-		'2' => 'Dolar Canadiense',
-		'3' => 'Euro',
-		'4' => 'Peso Mexicano'
+		'1' => 'USD - Dolar americano',
+		'2' => 'CAD - Dolar canadiense',
+		'3' => 'EUR - Euro',
+		'4' => 'MXN - Peso mexicano'
 
-	]
+	],
 
+	'condicion_pago' => [
+
+		'' => '--Selecciona una opción--',
+		'1' => 'Contado',
+		'2' => 'Crédito',
+	],
+
+	'vigencia' => [
+
+		'' => '--Selecciona una opción--',
+		'5' => '5 Días',
+		'10' => '10 Días',
+		'15' => '15 Días',
+		'30' => '30 Días',
+		'60' => '60 Días'
+	],
+
+	'iva' => [
+
+		'' => 'Selecciona una opción',
+		'1' => 'No aplicar',
+		'2' => 'Aplicar'
+	],
 ];
 

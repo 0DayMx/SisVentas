@@ -61,10 +61,3 @@
 
 @section('scripts') 
 
-<script>
-    $(function () {
-        $('#index_presentaciones').DataTable()
-    })
-</script>
-
-@stop

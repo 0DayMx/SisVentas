@@ -40,13 +40,18 @@ class ClienteController extends Controller
 
         if($cliente)
         {
-            session()->flash('success','El cliente '.$nombre.' se ha registrado correctamente.');
+            alert()->success(
+                'El cliente '.$nombre.' se ha registrado correctamente.', 
+                'Correcto'
+            )->html()->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El cliente no se pudo registrar.');
-            return redirect()->back();
+           alert()->error(
+                'El cliente no se pudo registrar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 
@@ -79,13 +84,18 @@ class ClienteController extends Controller
 
         if($cliente)
         {
-            session()->flash('success','El cliente se ha actualizado correctamente.');
+            alert()->success(
+                'El cliente se ha actualizado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El cliente no se pudo actualizar.');
-            return redirect()->back();
+            alert()->error(
+                'El cliente no se pudo actualizar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 
@@ -96,13 +106,18 @@ class ClienteController extends Controller
 
         if($cliente)
         {
-            session()->flash('success','El cliente se ha eliminado correctamente.');
+            alert()->success(
+                'El cliente se ha aliminado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El cliente no se pudo eliminar');
-            return redirect()->back();
+            alert()->error(
+                'El cliente no se pudo eliminar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 }

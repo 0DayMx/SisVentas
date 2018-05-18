@@ -58,13 +58,3 @@
 
 @stop
 
-
-@section('scripts') 
-
-<script>
-    $(function () {
-        $('#index_categorias').DataTable()
-    })
-</script>
-
-@stop

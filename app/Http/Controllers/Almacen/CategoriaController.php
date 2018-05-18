@@ -40,13 +40,18 @@ class CategoriaController extends Controller
 
         if($cat)
         {
-            session()->flash('success','La nueva categoría '.$nombre.' se ha registrado correctamente.');
+            alert()->success(
+                'La nueva categoría '.$nombre.' se ha registrado correctamente.', 
+                'Correcto'
+            )->html()->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','La categoría no se pudo registrar.');
-            return redirect()->back();
+            alert()->error(
+                'La categoría no se pudo registrar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 
@@ -78,13 +83,18 @@ class CategoriaController extends Controller
 
         if($categoria)
         {
-            session()->flash('success','La categoría se ha actualizado correctamente.');
+            alert()->success(
+                'La categoría se ha modificado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','La categoría no se pudo actualizar.');
-            return redirect()->back();
+            alert()->error(
+                'La categoría no se pudo modificar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 
@@ -95,13 +105,18 @@ class CategoriaController extends Controller
 
         if($cat)
         {
-            session()->flash('success','La categoría se ha eliminado correctamente.');
+           alert()->success(
+                'La categoría se ha eliminado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','La categoría no se pudo eliminar.');
-            return redirect()->back();
+            alert()->error(
+                'La categoría no se pudo eliminar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 }

@@ -19,7 +19,7 @@ class UpdateRequest extends Request
             'id_articulo' => 'required',
             'precio_compra' => 'required | numeric | between: 0,1000000.000',
             'tipo_moneda' => 'required',
-            'tipo_cambio' => 'required | numeric | between: 0,1000000.000',
+            'tipo_cambio' => 'numeric | between: 0,1000000.000',
             'precio_venta' => 'required | numeric | between: 0,1000000.000'
 
         ];

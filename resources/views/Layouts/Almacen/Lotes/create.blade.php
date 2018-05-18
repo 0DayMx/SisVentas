@@ -55,6 +55,7 @@
             <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
             {!! Form::text('precio_compra', null, ['class' => 'form-control input-sm','autocomplete'=>'off']) !!}
         </div>
+        <span class="help-label">Escribir dos decimales .00</p>
 
         @if( $errors->has('precio_compra') )          
             @foreach($errors->get('precio_compra') as $error )   
@@ -99,6 +100,7 @@
             <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
             {!! Form::text('precio_venta', null, ['class' => 'form-control input-sm','autocomplete'=>'off']) !!}
         </div>
+        <span class="help-label">Escribir dos decimales .00</p>
 
         @if( $errors->has('precio_venta') )          
             @foreach($errors->get('precio_venta') as $error )   

@@ -40,13 +40,18 @@ class ProveedorController extends Controller
 
         if($proveedor)
         {
-            session()->flash('success','El proveedor '.$nombre.' se ha registrado correctamente.');
+            alert()->success(
+                'El proveedor '.$nombre.' se ha registrado correctamente.', 
+                'Correcto'
+            )->html()->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('success','El proveedor no se pudo registrar.');
-            return redirect()->back();   
+            alert()->error(
+                'El proveedor no se pudo registrar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );  
         }
 
     }
@@ -80,13 +85,18 @@ class ProveedorController extends Controller
 
         if($proveedor)
         {
-            session()->flash('success','El proveedor se ha actualizado correctamente.');
+            alert()->success(
+                'El proveedor se ha modificado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El proveedor no se pudo actualizar.');
-            return redirect()->back();
+            alert()->error(
+                'El proveedor no se pudo modificar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );  
         }
     }
 
@@ -97,13 +107,18 @@ class ProveedorController extends Controller
 
         if($proveedor)
         {
-            session()->flash('success','El proveedor se ha eliminado correctamente.');
+           alert()->success(
+                'El proveedor se ha eliminado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El proveedor no se pudo eliminar.');
-            return redirect()->back();
+           alert()->error(
+                'El proveedor no se pudo eliminar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );  
         }
     }
 }

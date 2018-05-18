@@ -32,12 +32,8 @@
 			</tr>
 			<tr>
 				<td><strong>Precio de compra</strong></td>
-				<td><strong>$</strong> {!! $lote->precio_compra !!}</td>				
+				<td><strong>$</strong> {!! $lote->precio_compra !!} </td>				
 			</tr>			
-			<tr>
-				<td><strong>Precio de venta</strong></td>
-				<td><strong>$</strong> {!! $lote->precio_venta !!}</td>				
-			</tr>
 			<tr>
 				<td><strong>Tipo de moneda (Compra)</strong></td>
 				<td>{!! $lote->getTipoMoneda() !!}</td>				
@@ -45,6 +41,14 @@
 			<tr>
 				<td><strong>Tipo de cambio (Día de compra)</strong></td>
 				<td>{!! $lote->tipo_cambio !!}</td>				
+			</tr>
+			<tr>
+				<td><strong>Precio de compra (Real)</strong></td>
+				<td><strong>$</strong> {!! $lote->getPurchasePrice() !!}</td>				
+			</tr>
+			<tr>
+				<td><strong>Precio de venta</strong></td>
+				<td><strong>$</strong> {!! $lote->precio_venta !!}</td>				
 			</tr>
 			<tr>
 				<td><strong>Proveedor</strong></td>

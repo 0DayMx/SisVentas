@@ -62,13 +62,18 @@ class LoteController extends Controller
 
         if($lote)
         {
-            session()->flash('success','El lote se registró correctamente.');
+            alert()->success(
+                'El lote se registró correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El lote no se pudo registrar.');
-            return redirect()->back();
+            alert()->error(
+                'El lote no se pudo registrar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 
@@ -118,13 +123,18 @@ class LoteController extends Controller
 
         if($lote)
         {
-            session()->flash('success','El lote se ha modificado correctamente.');
+            alert()->success(
+                'El lote se ha modificado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El lote no se pudo modificar.');
-            return redirect()->back();
+            alert()->error(
+                'El lote no se pudo modificar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 
@@ -135,13 +145,18 @@ class LoteController extends Controller
 
         if($lote)
         {
-            session()->flash('success','El lote se ha eliminado correctamente.');
+            alert()->success(
+                'El lote se ha eliminado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','El lote no se pudo eliminar.');
-            return redirect()->back();
+            alert()->error(
+                'El lote no se pudo eliminar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 }

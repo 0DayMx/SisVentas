@@ -58,13 +58,3 @@
 
 @stop
 
-
-@section('scripts') 
-
-<script>
-    $(function () {
-        $('#index_lotes').DataTable()
-    })
-</script>
-
-@stop

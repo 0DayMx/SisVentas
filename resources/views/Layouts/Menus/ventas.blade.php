@@ -7,8 +7,8 @@
     </a>
     
     <ul class="treeview-menu">
-    	<li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-    	<li><a href="{!! url('clientes') !!}"><i class="fa fa-circle-o"></i> Clientes</a></li>
+    	<li><a href="ventas/venta"><i class="fa fa-angle-right"></i> Ventas</a></li>
+    	<li><a href="{!! url('clientes') !!}"><i class="fa fa-angle-right"></i> Clientes</a></li>
     </ul>
 
 </li>

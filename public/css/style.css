@@ -4,8 +4,18 @@
   margin-top: 8px;
   margin-bottom: 8px;
   color: #434343;
+   /*color: #33BEFF;*/
   font-size: 11px;
   font-weight: bold;
+}
+
+/* Etiqueta para texto de ayuda en formularios */
+.help-label {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  color: #229EBA;
+  font-size: 11px;
 }
 
 /* Color en td para tabla informativa */
@@ -89,4 +99,29 @@
 {
     font-size: 12px;
     background-color: #FFF; 
+}
+
+
+.text-nueve{ font-size: 9px }
+.text-diez{ font-size: 10px }
+.text-once{ font-size: 11px }
+.text-doce{ font-size: 12px }
+.text-trece{ font-size: 13px }
+.text-catorce{ font-size: 14px }
+
+
+/* Estilo parámetro tabla modal detalle de cotizacion */
+.text-blue-uno{
+    color:#00677C;
+}
+
+.well-default {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 0px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
 }

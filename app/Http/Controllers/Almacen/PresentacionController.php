@@ -37,13 +37,18 @@ class PresentacionController extends Controller
 
         if($presentacion)
         {
-            session()->flash('success','La presentación se ha registrado correctamente.');
+            alert()->success(
+                'La presentación se ha registrado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','La presentación no se pudo registrar.');
-            return redirect()->back();
+            alert()->error(
+                'La presentación no se pudo registrar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 
@@ -76,13 +81,18 @@ class PresentacionController extends Controller
 
         if($presentacion)
         {
-            session()->flash('success','La presentación se ha modificado correctamente.');
+            alert()->success(
+                'La presentación se ha modificado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','La presentación no se pudo modificar.');
-            return redirect()->back();
+            alert()->error(
+                'La presentación no se pudo modificar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
 
     }
@@ -94,13 +104,18 @@ class PresentacionController extends Controller
 
         if($presentacion)
         {
-            session()->flash('success','La presentación se ha eliminado correctamente.');
+            alert()->success(
+                'La presentación se ha eliminado correctamente.', 
+                'Correcto'
+            )->autoclose( 3000 );
             return redirect()->back();
         }
         else
         {
-            session()->flash('error','La presentación no se pudo eliminar');
-            return redirect()->back();
+            alert()->error(
+                'La presentación no se pudo eliminar.',
+                'Intenta nuevamente'
+            )->persistent( 'Cerrar' );
         }
     }
 }
