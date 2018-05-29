@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-05-2018 a las 22:04:47
+-- Tiempo de generación: 29-05-2018 a las 07:04:48
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -168,11 +168,14 @@ INSERT INTO `cot_cotizacion` (`id`, `receptor`, `no_cotizacion`, `id_cliente`, `
 
 CREATE TABLE `inventario` (
   `id` int(11) NOT NULL,
-  `fecha` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha` datetime NOT NULL,
   `cantidad` decimal(10,3) NOT NULL,
   `id_lote` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `tipo_comprobante` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `numero_comprobante` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------

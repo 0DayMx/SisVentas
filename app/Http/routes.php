@@ -12,9 +12,13 @@
 */
 
 
-Route::get('/', function () {
+Route::get('login', function () {
     return view('auth/login');
 });
+Route::get('/', function () {
+    return view('welcome');
+ });
+
 Route::resource('seguridad/usuario','UsuarioController');
 
 // --- ENRUTADO ARTÍCULOS

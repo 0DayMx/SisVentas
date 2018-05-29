@@ -10,7 +10,8 @@
         "laravelcollective/html": "^5.2.0",
         "nesbot/carbon": "^1.22",
         "barryvdh/laravel-dompdf": "^0.8.0",
-        "facturama/facturama-php-sdk": "^2.0@dev"
+        "facturama/facturama-php-sdk": "^2.0@dev",
+        "uxweb/sweet-alert": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

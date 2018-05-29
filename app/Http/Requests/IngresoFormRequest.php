@@ -4,7 +4,7 @@ namespace sisventas\Http\Requests;
 
 use sisventas\Http\Requests\Request;
 
-class UsuarioFormRequest extends Request
+class IngresoFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UsuarioFormRequest extends Request
      */
     public function authorize()
     {
-        return True;
+        return true;
     }
 
     /**
@@ -24,9 +24,11 @@ class UsuarioFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            //
+            'id_lote'=>'required',
+            'cantidad'=>'required',
+            'tipo_comprobante'=>'required|max:20',
+            'numero_comprobante'=>'required|max:20'
         ];
     }
 }
