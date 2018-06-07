@@ -63,7 +63,7 @@ Route::resource( 'proveedores','Compras\ProveedorController',[ 'except' => [ 'de
 
 
 
-// --- ENRUTATO DE CLIENTES ---//
+// --- ENRUTADO DE CLIENTES ---//
 Route::group( [ 'prefix'=>'clientes' ], function(){
 	Route::put( '/{id}/update','Ventas\ClienteController@update' );
 	Route::get( '/{id}/destroy','Ventas\ClienteController@destroy' );
@@ -86,6 +86,14 @@ Route::post( 'cotizacion/{id}/agrega_articulo','Cotizador\AgregaArticuloControll
 Route::post( 'cotizacion/{id}/destroy_articulo','Cotizador\AgregaArticuloController@destroy' );
 
 
+// --- CONFIGURACIÓN ---
+Route::group( [ 'prefix' => 'config' ], function(){
+	Route::resource( 'logo','Configuracion\LogoController' );
+
+	Route::put( '/facturacion/{id}/update','Configuracion\DatosFacturacionController@update' );
+	Route::get( '/facturacion/{id}/destroy','Configuracion\DatosFacturacionController@destroy' );
+	Route::resource( 'facturacion','Configuracion\DatosFacturacionController' );
+} );
 
 Route::auth();
 

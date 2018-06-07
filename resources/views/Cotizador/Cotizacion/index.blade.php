@@ -9,7 +9,7 @@
 
 <section class="content-header">
     
-    <h1>Control de cotizaciones <small>CONSULTAR REGISTRO PENDIENTES</small> </h1>
+    <h1>Control de cotizaciones <small>CONSULTAR REGISTROS PENDIENTES</small> </h1>
      
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

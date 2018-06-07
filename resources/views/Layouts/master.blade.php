@@ -108,7 +108,8 @@
             		    @include( 'Layouts.Menus.compras' )
             		    @include( 'Layouts.Menus.ventas' )
 										@include( 'Layouts.Menus.cotizador' )
-            		    @include('Layouts.Menus.acceso')
+            		    @include( 'Layouts.Menus.acceso' )
+                    @include( 'Layouts.Menus.configuracion' )
             
              		    <li>
               			    <a href="#">
