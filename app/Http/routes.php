@@ -88,6 +88,9 @@ Route::post( 'cotizacion/{id}/destroy_articulo','Cotizador\AgregaArticuloControl
 
 // --- CONFIGURACIÓN ---
 Route::group( [ 'prefix' => 'config' ], function(){
+	
+	Route::get( '/logo/{id}/download','Configuracion\LogoController@download' );
+	Route::get( '/logo/{id}/destroy','Configuracion\LogoController@destroy' );
 	Route::resource( 'logo','Configuracion\LogoController' );
 
 	Route::put( '/facturacion/{id}/update','Configuracion\DatosFacturacionController@update' );
