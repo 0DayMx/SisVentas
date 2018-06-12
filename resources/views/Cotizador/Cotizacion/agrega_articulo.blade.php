@@ -34,6 +34,7 @@
               |
               {!! $cotizacion->no_cotizacion !!}
               | 
+              <!-- Modal del detalle, para exportar a pdf y enviar por correo -->
               {!! Form::submit('Detalle de esta cotización',[
                   'class'=>'btn btn-xs btn-info',
                   'data-toggle'=>'modal',

@@ -17,7 +17,9 @@ class DatosFacturacion extends Model
     		'calle',
     		'colonia',
     		'municipio',
-    		'entidad'    		
+    		'entidad',
+            'telefono',
+            'correo'
     ];
 
     // Obtenemos la dirección fiscal completa
@@ -29,7 +31,7 @@ class DatosFacturacion extends Model
         $municipio = $this->attributes[ 'municipio' ];
         $entidad = $this->attributes[ 'entidad' ];
 
-        return $calle.', '.$colonia.', '.$codigo_postal.', '.$municipio.', '.$entidad;
+        return $calle.', '.$colonia.', '.$codigo_postal.', '.$municipio.', '.$entidad.'.';
     }
 
 }

@@ -29,7 +29,7 @@
                               </tr>
                               <tr>
                                   <td><span class="text-blue-uno"> Correo destino </span></td>
-                                  <td> {!! $cotizacion->correo !!} </td>
+                                  <td> {!! $cotizacion->getEmail() !!} </td>
                               </tr>
                               <tr>
                                   <td><span class="text-blue-uno"> Fecha de emision </span></td>
@@ -61,11 +61,11 @@
                               </tr>
                               <tr>
                                   <td><span class="text-blue-uno">Creada</span></td>
-                                  <td>{!! $cotizacion->created_at !!}</td>
+                                  <td>{!! $cotizacion->getFechaRegistro() !!}</td>
                               </tr>
                               <tr>
                                   <td><span class="text-blue-uno">Modificada</span></td>
-                                  <td>{!! $cotizacion->updated_at !!}</td>
+                                  <td>{!! $cotizacion->getFechaModificacion() !!}</td>
                               </tr>
                               <tr>
                                   <td><span class="text-blue-uno">Estatus de la cotización</span></td>
@@ -80,12 +80,12 @@
         
             <div class="modal-footer">
 
-                <a href="{!! url('cotizador/cotizacion/'.$cotizacion->id.'/export/1') !!}" 
+                <a href="{!! url('cotizacion/'.$cotizacion->id.'/export/online') !!}" 
                     class="btn btn-light btn-xs"
                     target="_blank">                   
                     Exportar a PDF <i class="fa fa-file-pdf-o"></i>
                 </a>
-                <a href="{!! url('cotizador/cotizacion/'.$cotizacion->id.'/export/2') !!}" 
+                <a href="{!! url('cotizacion/'.$cotizacion->id.'/export/download') !!}" 
                     class="btn btn-light btn-xs"
                     target="_blank">                   
                     Descargar en PDF <i class="fa fa-download"></i>
@@ -94,7 +94,7 @@
                 <a
                     class="btn btn-light btn-xs"
                     target="_blank" disabled>                   
-                    Envier por email <i class="glyphicon glyphicon-print"></i>
+                    Enviar por email <i class="glyphicon glyphicon-print"></i>
                 </a>
 
                 <a href="{!! url('cotizacion/'.$cotizacion->id.'/edit') !!}" 

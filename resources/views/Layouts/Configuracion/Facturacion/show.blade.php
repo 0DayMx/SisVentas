@@ -39,6 +39,18 @@
                   <font color="#C7C7C7">( Dirección fiscal )</font>
               </a>
           </li>
+          <li>
+              <a href="#">
+                  {!! $facturacion->telefono !!}
+                  <font color="#C7C7C7">( Teléfono(s) )</font>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  {!! $facturacion->correo !!}
+                  <font color="#C7C7C7">( Email(s) )</font>
+              </a>
+          </li>
         </ul>
 
     </div>

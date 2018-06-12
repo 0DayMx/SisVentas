@@ -18,19 +18,19 @@
 
 				@if( file_exists( $url_logo ) )
         	
-        			<center>{!! Html::image( $url_logo,'',['class'=>'img-thumbnail'] ) !!}</center>
+        		<center>{!! Html::image( $url_logo,'',['class'=>'img-thumbnail'] ) !!}</center>
 
-        		@else
+        @else
             
-            		<center>
-            			{!! Html::image( 'images/no_data/noFile.png','',['class'=>'img-thumbnail'] ) !!}
-            		</center>
+            <center>
+            	 {!! Html::image( 'images/no_data/noFile.png','',['class'=>'img-thumbnail'] ) !!}
+            </center>
 
-        		@endif
+        @endif
 
-        		<br>
+        <br>
 
-        		<button class='btn btn-danger btn-xs' 
+        <button class='btn btn-danger btn-xs' 
     				value="{!! $logo->id !!}" 
     				data-toggle="tooltip" data-placement="top" title="Eliminar"
     				onclick="

@@ -178,4 +178,70 @@ class Cotizacion extends Model
 
         return $var;
     }
+
+
+    // Obtenemos la fecha de registro de la cotización en letra
+    public function getFechaRegistro()
+    {
+        return $this->getDateName( $this->attributes[ 'created_at' ] );
+    }
+
+    public function getFechaModificacion()
+    {
+        $__created = $this->attributes[ 'created_at' ];
+        $__updated = $this->attributes[ 'updated_at' ];
+
+        if( $__created == $__updated )
+        {
+            return 'No se ha modificado';
+        }
+        else
+        {
+            setlocale( LC_ALL,"es_ES@euro" ,"es_ES", "esp" );
+            return $this->getDateName( $__updated  );
+            //para la hora %X = 9:30:00  o %H:%M:%S = 09:30:00
+        }
+
+    }
+
+
+
+
+     // --------- PRIVATES FUNCTIONS -----------
+
+    /*
+        - Para mostrar la fecha en letra, los acentos los muestra con un caracter raro.
+        - Esta funcion verifica si la fecha cae en sábado o miércoles retornamos la palabra con acento en la a, 
+          de lo contrario retornamos la fecha como tal.
+        - Esta función recibe la fecha a analizar para verificar si cae en sábado, miércoles o no.
+    */
+    private function getDateName( $date )
+    {
+        setlocale( LC_ALL,"es_ES@euro" ,"es_ES", "esp" );
+
+        // %w es para obtener la representación numérica del día de la semana, 0 (para Domingo) hasta 6 (para Sábado). 
+        /*
+            0-Domingo
+            1-Lunes
+            2-Martes
+            3-Miércoles
+            4-Jueves
+            5-Vienres
+            6-Sábado
+         */
+        //Verificamos si la fecha cae en '3' miércoles
+        if( strftime( '%w', strtotime( $date ) ) == '3' )
+        {
+            return strftime( "El miércoles %d de %B del %Y a las %H:%M:%S", strtotime( $date ) );
+        }
+        //Verificamos si la fecha cae en '6' sábado
+        elseif( strftime( '%w', strtotime( $date ) ) == '6' )
+        {
+            return strftime( "El sábado %d de %B del %Y a las %H:%M:%S", strtotime( $date ) );
+        }
+        else
+        {
+            return strftime( "El %A %d de %B del %Y a las %H:%M:%S", strtotime( $date ) );
+        } 
+    }
 }

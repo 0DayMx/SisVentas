@@ -22,7 +22,6 @@
                                   <th>Receptor</th>
                                   <th>Cliente</th>
                                   <th>Creada</th>
-                                  <th></th>
                               </tr>
                           </thead>
 
@@ -33,8 +32,7 @@
                                       <td>{!! $dato->cotizacion !!}</td>
                                       <td>{!! $dato->receptor !!}</td>
                                       <td>{!! $dato->cliente !!}</td>
-                                      <td>{!! $dato->created_at !!}</td>
-                                      <td><i>{!! $dato->created_at->diffForHumans() !!} aprox.</i></td>
+                                      <td>{!! $dato->getFechaRegistro() !!}</td>
                                   </tr>
                               @endforeach
 

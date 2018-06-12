@@ -1,3 +1,8 @@
+<p class="text-primary">
+    <strong>Nota.</strong>
+    Algunos datos de aquí son tomados para el formato de cotizaciones. (Sugerencia de llenar todo el formulario)
+</p>
+
 <div class="form-group">
 
     <div class="col-lg-4"> 
@@ -103,6 +108,31 @@
             @endforeach
         @endif
     </div>
+
+    <div class="col-lg-4"> 
+        <span class="help-block-label">TELÉFONO(S)</span>       
+        <div class="input-group"> 
+            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            {!! Form::text('telefono', null, ['class' => 'form-control input-sm','autocomplete'=>'off']) !!}
+        </div>
+
+    </div>
+
+    <div class="col-lg-4"> 
+        <span class="help-block-label">EMAIL DE CONTACTO</span>       
+        <div class="input-group"> 
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            {!! Form::text('correo', null, ['class' => 'form-control input-sm','autocomplete'=>'off']) !!}
+        </div>
+
+        @if( $errors->has('correo') )          
+            @foreach($errors->get('correo') as $error )   
+                <font color="#BF4949" size="2">{{ $error }}</font></br>
+            @endforeach
+        @endif
+    </div>
+
+
 
 </div>
 
