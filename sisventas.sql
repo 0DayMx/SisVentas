@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-04-2018 a las 23:11:22
+-- Tiempo de generación: 12-06-2018 a las 18:38:27
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -41,9 +41,10 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`id`, `nombre`, `descripcion`, `id_categoria`, `id_presentacion`, `created_at`, `updated_at`) VALUES
-(4, 'Leche Lala', '<p>Leche condensada</p>', 4, 3, '2018-01-25 19:15:53', '2018-01-25 19:15:53'),
+(4, 'Leche Lala', '<p>1lt, Leche condensada, pasteurizada y homogenizada,</p>', 4, 3, '2018-01-25 19:15:53', '2018-05-09 19:02:59'),
 (5, 'Yogurt Carranco', '<p>Yogurt En bote</p>', 4, 3, '2018-01-25 19:26:38', '2018-01-25 19:26:38'),
-(6, 'Sandía', '<p>Sand&iacute;a michoacana</p>', 5, 4, '2018-01-25 19:43:28', '2018-01-25 19:43:28');
+(6, 'Sandía', '<p>Sand&iacute;a michoacana</p>', 5, 4, '2018-01-25 19:43:28', '2018-01-25 19:43:28'),
+(7, 'Platano', '<p>Platano macho</p>', 5, 4, '2018-06-07 17:21:39', '2018-06-07 17:21:39');
 
 -- --------------------------------------------------------
 
@@ -97,17 +98,137 @@ INSERT INTO `cliente` (`id`, `razon_social`, `regimen_fiscal`, `tipo_documento`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cot_articulo`
+--
+
+CREATE TABLE `cot_articulo` (
+  `id` int(11) NOT NULL,
+  `id_cotizacion` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `id_lote` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Volcado de datos para la tabla `cot_articulo`
+--
+
+INSERT INTO `cot_articulo` (`id`, `id_cotizacion`, `cantidad`, `id_lote`, `created_at`, `updated_at`) VALUES
+(1, 4, 1, 1, '2018-05-09 17:31:42', '2018-05-09 17:31:42'),
+(2, 4, 2, 2, '2018-05-09 20:05:14', '2018-05-09 20:05:14'),
+(5, 4, 1, 2, '2018-05-09 22:13:58', '2018-05-09 22:13:58'),
+(8, 3, 1, 1, '2018-05-10 17:50:21', '2018-05-10 17:50:21'),
+(9, 3, 1, 2, '2018-05-10 17:50:21', '2018-05-10 17:50:21'),
+(10, 3, 5, 1, '2018-05-10 17:50:57', '2018-05-10 17:50:57'),
+(11, 5, 2, 2, '2018-06-12 15:15:46', '2018-06-12 15:15:46');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cot_cotizacion`
+--
+
+CREATE TABLE `cot_cotizacion` (
+  `id` int(11) NOT NULL,
+  `receptor` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `no_cotizacion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `correo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_emision` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `tiempo_entrega` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `condicion_pago` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `vigencia` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `iva` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `descuento` smallint(6) NOT NULL,
+  `id_userEmisor` int(11) NOT NULL,
+  `nota` text COLLATE utf8_unicode_ci NOT NULL,
+  `aceptada` tinyint(1) NOT NULL,
+  `fecha_aceptada` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `rechazada` tinyint(1) NOT NULL,
+  `fecha_rechazada` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Volcado de datos para la tabla `cot_cotizacion`
+--
+
+INSERT INTO `cot_cotizacion` (`id`, `receptor`, `no_cotizacion`, `id_cliente`, `correo`, `fecha_emision`, `tiempo_entrega`, `condicion_pago`, `vigencia`, `iva`, `descuento`, `id_userEmisor`, `nota`, `aceptada`, `fecha_aceptada`, `rechazada`, `fecha_rechazada`, `created_at`, `updated_at`) VALUES
+(1, 'Omar Fragoso', '2018-001', 4, 'omar@hotmail.com', '2018-05-07', '4-6', '1', '10', '2', 0, 0, '<p>Esta es la nota si</p>', 0, '', 0, '', '2018-05-07 17:46:10', '2018-05-08 20:43:38'),
+(3, 'Daniel Romero', '2018-003', 6, 'daniel@rmp.mx', '2018-05-09', '10 días hábiles', '2', '5', '2', 70, 0, '<p>Esta es la nota de la cot.</p>', 0, '', 0, '', '2018-05-09 15:06:50', '2018-05-10 17:59:47'),
+(4, 'Raul Flores', '2018-004', 6, 'raul@gmail.com', '2018-05-09', 'Inmediata', '1', '5', '2', 0, 0, '<p>Precios sujetos a <strong>cambio</strong> sin previo aviso</p>', 0, '', 0, '', '2018-05-09 15:08:46', '2018-06-12 16:22:19'),
+(5, 'Omar Fragoso', '2018-005', 4, '', '2018-06-08', '2 días hábiles', '1', '10', '1', 0, 0, '<p>Esta ser&aacute; la nota</p>', 0, '', 0, '', '2018-06-08 13:54:24', '2018-06-12 15:34:34');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos_facturacion`
+--
+
+CREATE TABLE `datos_facturacion` (
+  `id` int(11) NOT NULL,
+  `razon_social` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `rfc` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
+  `regimen_fiscal` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `codigo_postal` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `calle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `colonia` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `municipio` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `entidad` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telefono` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `correo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `datos_facturacion`
+--
+
+INSERT INTO `datos_facturacion` (`id`, `razon_social`, `rfc`, `regimen_fiscal`, `codigo_postal`, `calle`, `colonia`, `municipio`, `entidad`, `telefono`, `correo`, `created_at`, `updated_at`) VALUES
+(6, 'Supremetires mx', 'SUP2315694510', '601 - General de Ley Personas Morales', '78469', 'Calle Lanzagorta #890', 'Los Pinos', 'San Luis Potosí', 'San Luis Potosí', '8-22-36-14', 'correo@dominio.com', '2018-06-07 18:28:43', '2018-06-12 16:36:07');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `inventario`
 --
 
 CREATE TABLE `inventario` (
   `id` int(11) NOT NULL,
-  `fecha` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha` datetime NOT NULL,
   `cantidad` decimal(10,3) NOT NULL,
   `id_lote` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `tipo_comprobante` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `numero_comprobante` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `logo`
+--
+
+CREATE TABLE `logo` (
+  `id` int(11) NOT NULL,
+  `nameOrg` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nameSan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nameEnc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ext` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `size` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `logo`
+--
+
+INSERT INTO `logo` (`id`, `nameOrg`, `nameSan`, `nameEnc`, `ext`, `size`) VALUES
+(7, 'logo.jpg', 'logo.jpg', 'uBqqKgbsm1fpwq50X3PT.jpg', 'jpg', '0.061');
 
 -- --------------------------------------------------------
 
@@ -118,10 +239,10 @@ CREATE TABLE `inventario` (
 CREATE TABLE `lote` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `precio_compra` decimal(10,3) NOT NULL,
-  `precio_venta` decimal(10,3) NOT NULL,
+  `precio_compra` decimal(13,2) NOT NULL,
+  `precio_venta` decimal(13,2) NOT NULL,
   `tipo_moneda` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `tipo_cambio` decimal(10,3) NOT NULL,
+  `tipo_cambio` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `id_articulo` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -133,8 +254,46 @@ CREATE TABLE `lote` (
 --
 
 INSERT INTO `lote` (`id`, `nombre`, `precio_compra`, `precio_venta`, `tipo_moneda`, `tipo_cambio`, `id_articulo`, `id_proveedor`, `created_at`, `updated_at`) VALUES
-(1, 'Lote USD', '23.690', '25.000', '1', '18.470', 4, 2, '2018-01-26 17:30:04', '2018-02-06 14:57:32'),
-(2, 'Lote USD 2', '23.000', '25.500', '1', '18.525', 5, 2, '2018-02-06 16:11:28', '2018-02-06 16:11:28');
+(1, 'Lote USD', '23.69', '28.30', '4', '', 4, 2, '2018-01-26 17:30:04', '2018-05-09 21:06:12'),
+(2, 'Lote USD 2', '21.00', '30.00', '1', '18.525', 5, 2, '2018-02-06 16:11:28', '2018-06-11 21:43:22');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `migrations`
+--
+
+INSERT INTO `migrations` (`migration`, `batch`) VALUES
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('milton.ortega@oday.mx', 'eb0cab6554d561c2d0955f2831167b0aa060f5386307e175283673b3acefc85e', '2018-05-18 04:24:13');
 
 -- --------------------------------------------------------
 
@@ -183,6 +342,31 @@ CREATE TABLE `proveedor` (
 INSERT INTO `proveedor` (`id`, `razon_social`, `tipo_documento`, `numero_documento`, `direccion`, `telefono`, `correo`, `created_at`, `updated_at`) VALUES
 (2, 'Calcio las águilas S.A. de C.V.', '2', '123654789', 'Calle las águinlas, Colonia guayabos #239', '8326548', 'correo@gmail.com', '2018-01-08 18:45:00', '2018-01-26 20:36:24');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Milton', 'milton.ortega@oday.mx', '$2y$10$NIOg19M0LtyIHI0Emu19vO2VrpZiW690gLGUrViF1/LGRnPAZv1Sm', '2bncwpe2fvtHrzrUXyXSCPssbXgpDnIr2iEPbTMA5Kr9q9LD9dRY9ZwhRVMa', '2018-05-18 03:54:41', '2018-06-05 21:00:23'),
+(3, 'Juan Carlos', 'carlos-hdz22@hotmail.com', '$2y$10$ihkZs3tLN9az0F44rsJgxe3E5vP5sXMo1GdFsnWrdoH0uKLdi7bYO', NULL, '2018-05-31 18:35:23', '2018-05-31 18:35:23'),
+(4, 'Jose', 'juankeke@hotmail.com', '$2y$10$tPFLpoPD8j4ZmG/O/CFU3uuLeGPWi3mWXRlbTkmlrqq1yIZ1GJbw6', 'dMSLVwZHs7OLTzoDjg9Z27sECPxUmmYciiek8SfbSC1nyCIjSHb6lOI6i1DR', '2018-06-05 20:55:11', '2018-06-07 23:07:47');
+
 --
 -- Índices para tablas volcadas
 --
@@ -208,11 +392,39 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `cot_articulo`
+--
+ALTER TABLE `cot_articulo`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cotizacion` (`id_cotizacion`),
+  ADD KEY `id_sp` (`id_lote`);
+
+--
+-- Indices de la tabla `cot_cotizacion`
+--
+ALTER TABLE `cot_cotizacion`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_firma` (`id_userEmisor`);
+
+--
+-- Indices de la tabla `datos_facturacion`
+--
+ALTER TABLE `datos_facturacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `inventario`
 --
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_lote` (`id_lote`);
+
+--
+-- Indices de la tabla `logo`
+--
+ALTER TABLE `logo`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `lote`
@@ -221,6 +433,13 @@ ALTER TABLE `lote`
   ADD PRIMARY KEY (`id`),
   ADD KEY `articulo` (`id_articulo`),
   ADD KEY `id_proveedor` (`id_proveedor`);
+
+--
+-- Indices de la tabla `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`),
+  ADD KEY `password_resets_token_index` (`token`);
 
 --
 -- Indices de la tabla `presentacion`
@@ -235,6 +454,13 @@ ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -242,7 +468,7 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
@@ -254,10 +480,30 @@ ALTER TABLE `categoria`
 ALTER TABLE `cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT de la tabla `cot_articulo`
+--
+ALTER TABLE `cot_articulo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT de la tabla `cot_cotizacion`
+--
+ALTER TABLE `cot_cotizacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `datos_facturacion`
+--
+ALTER TABLE `datos_facturacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `logo`
+--
+ALTER TABLE `logo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `lote`
 --
@@ -273,6 +519,21 @@ ALTER TABLE `presentacion`
 --
 ALTER TABLE `proveedor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `cot_articulo`
+--
+ALTER TABLE `cot_articulo`
+  ADD CONSTRAINT `Elimina art. agregados si se elimina su cotización` FOREIGN KEY (`id_cotizacion`) REFERENCES `cot_cotizacion` (`id`) ON DELETE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

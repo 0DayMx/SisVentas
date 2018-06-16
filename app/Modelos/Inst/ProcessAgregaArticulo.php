@@ -33,15 +33,13 @@ class ProcessAgregaArticulo extends Model
         
         // -------------------//
 
-        // Calculamos el descuento en decimal
-        $__descuentoDecimal = number_format( ( $__varDescuento / 100 ),2,'.','' );
-
         $__subtotal = number_format( $importeSinIVA,2,'.','' ); // Var retornada
         $__iva = number_format( ( $__subtotal * $__valorIva ),2,'.','' ); // Var retornada
 
         $__totalSinDescuento = number_format( ( $__subtotal + $__iva ),2,'.','' );
 
         //Multiplicamos el total sin descuento por el descuento en decimal para sacar el equivalente.
+        $__descuentoDecimal = number_format( ( $__varDescuento / 100 ),2,'.','' );
         $__total_x_descuentoDecimal = number_format( ( $__totalSinDescuento * $__descuentoDecimal ),2,'.','' );
         
         //Obtenemos el total Restando el (total sin descuento) menos ( el equivalente al descuento del total )

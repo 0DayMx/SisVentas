@@ -51,8 +51,8 @@
     <div class="col-lg-3">
         <span class="help-block-label">CLIENTE</span>     
         {!! Form::select('id_cliente', $clientes, null, [
-                'class'=>'form-control input-sm ', 
-                'title' => 'selecciona un Régimen']) !!}
+                'class'=>'form-control select2 ', 
+                'title' => 'selecciona un cliente']) !!}
 
         @if( $errors->has('id_cliente') )          
             @foreach($errors->get('id_cliente') as $error )   

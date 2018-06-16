@@ -1,114 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends( 'Cotizador.PDF.masterPDFCot' )
 
-<head>
-	<meta charset="UTF-8">
-	<title>@yield('title')</title>
+@section('title', 'Cotización | '.$cotizacion->no_cotizacion )
 
-	{{-- Html::style('css/bootstrap.css') --}} 
-	{!! Html::style('css/cotizacion.css') !!}
-
-</head>
-
-<body style="font-family: 'Play', sans-serif;">
-
-<!--<table>
-		<thead>
-			<tr>
-				<th>{!! Html::image('img/logoRM.jpg', '', ['width' => '180', 'height' => '65']) !!}</th>
-				<th></th>
-			</tr>
-		</thead>
-	</table>-->
-	<div id="header"> 
-		{!! Html::image('images/reporte/head.png', '', ['class'=>'img-head']) !!}
-	</div>
-
-	<div id="footer">
-    	<p>
-    		<center>
-    			<hr width="100%">
-    			<hr width="100%">
-				<p>Benigno Arriaga No. 260 Col. 21 de Marzo Soledad de Graciano Sánchez, S.L.P. C.P. 78437
-					<br>
-					Tel. y Fax: (444)822 41 41 &nbsp;&nbsp;&nbsp; (444)822 40 75
-				</p>
-			</center>
-    	</p>
-  	</div>	
-
-  	<!-- Marca de agua -->
-  	<div id="marca-agua"> 
-		{!! Html::image('images/reporte/marca_agua.jpg', '', ['class'=>'img-marca-agua']) !!}
-	</div>
-
-
-<div id="content">
+@section( 'body' )
+	
 	
 	<br>
+	
+	<!-- Incluimos los datos del cliente si es que va dirigido hacia alguno -->
+	@include( 'Cotizador.PDF.Layouts.receptor' )
 
-	<table width="100%">
-			
-		<thead></thead>
-			
-		<tbody>
-			<tr>
-				<td width="50%" style="margin-top: 0px;">
 
-					<div class="body-table-rep-tec">
-						<table width="100%">
+	<p class="parrafo"><strong>At'n {!! $cotizacion->receptor !!}</strong></p>
+	<p class="parrafo">
+		En atención a su amable solicitud, ponemos a su consideración la siguiente cotización... 
+	</p>
 
-							<thead></thead>
-							<tbody>
-								<tr>
-									<td>
-										<strong>Para:</strong>
-										<br><br>
-										<strong>{!! $cliente->razon_social !!}</strong>
-										<br>
-										{!! $cliente->calle !!}
-										<br>
-										{!! $cliente->colonia !!}
-										<br>
-										{!! $cliente->localidad !!}
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-						
-				</td>
-				
-				<td width="15%" style="margin-top: 0px;">
-					<!-- Aquí iria el logotipo del cliente -->
-				</td>
-
-				<td width="35%" style="margin-top: 0px;">
-
-					<center>
-						<p class="no-cotizacion">
-							<strong>COTIZACION:</strong> No. {!! $cotizacion->no_cotizacion !!}
-						</p>
-						<p class="no-cotizacion">
-							{!! $cotizacion->getFechaEmision() !!}
-						</p>
-					</center>					
-
-				</td>
-
-			</tr>
-		</tbody>
-	</table>
-			
 	<br>
 
-		@yield('body')
+	<!-- Incluimos la tabla de los artículos agregados -->
+	@include( 'Cotizador.PDF.Layouts.articulos' )
+
+	<br>
+
+	<!-- Incluimos el layout de los datos de vigencia y tiempo de entrega -->
+	@include( 'Cotizador.PDF.Layouts.condiciones' )
+
+	<br>
+
+	<p class="text-trece" align="justify">
+    	Agradecemos su valiosa atención, esperando vernos favorecidos con su pedido.
+	</p>
 
 
-</div>
+	
+	<!-- Para posicionar la firma al final de la hoja -->
+	<div class="firma">
 
-<br>
+		<p align="center">
+			<span class="parrafo"><strong>ATENTAMENTE</strong></span>
+			<br>
 
-</body>
+			<span class="parrafo">
+            	<strong>{!! Auth::user()->name !!}</strong><br>
+        	</span>
+        </p>
 
-</html>
+    </div>
+
+@stop

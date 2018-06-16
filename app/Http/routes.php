@@ -63,7 +63,7 @@ Route::resource( 'proveedores','Compras\ProveedorController',[ 'except' => [ 'de
 
 
 
-// --- ENRUTATO DE CLIENTES ---//
+// --- ENRUTADO DE CLIENTES ---//
 Route::group( [ 'prefix'=>'clientes' ], function(){
 	Route::put( '/{id}/update','Ventas\ClienteController@update' );
 	Route::get( '/{id}/destroy','Ventas\ClienteController@destroy' );
@@ -77,7 +77,7 @@ Route::group( [ 'prefix'=>'cotizacion' ], function(){
 	Route::put( '/{id}/update','Cotizador\CotizacionController@update' );
 	Route::get( '/{id}/destroy','Cotizador\CotizacionController@destroy' );
 	//Exportar, Exportar y descargar
-	Route::get('{id}/export/{type}','Cotizador\CotizacionPDFController@export');
+	Route::get('{id}/export/{tipo}','Cotizador\CotizacionPDFController@export');
 });
 Route::resource( 'cotizacion','Cotizador\CotizacionController',[ 'except' => [ 'destroy','update' ] ] );
 
@@ -86,6 +86,19 @@ Route::post( 'cotizacion/{id}/agrega_articulo','Cotizador\AgregaArticuloControll
 Route::post( 'cotizacion/{id}/destroy_articulo','Cotizador\AgregaArticuloController@destroy' );
 
 
+// --- CONFIGURACIÓN ---
+Route::group( [ 'prefix' => 'config' ], function(){
+	
+	// Logotipo
+	Route::get( '/logo/{id}/download','Configuracion\LogoController@download' );
+	Route::get( '/logo/{id}/destroy','Configuracion\LogoController@destroy' );
+	Route::resource( 'logo','Configuracion\LogoController' );
+
+	// Datos de facturacion
+	Route::put( '/facturacion/{id}/update','Configuracion\DatosFacturacionController@update' );
+	Route::get( '/facturacion/{id}/destroy','Configuracion\DatosFacturacionController@destroy' );
+	Route::resource( 'facturacion','Configuracion\DatosFacturacionController' );
+} );
 
 Route::auth();
 

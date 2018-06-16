@@ -28,6 +28,11 @@
      <!-- Sweetalert Css -->
     {!! Html::style( 'plugins/sweetalert/sweetalert.css' ) !!}
 
+    <!-- CARGA DE IMÁGENES -->
+    {!! Html::style('fileinput/css/fileinput.min.css') !!}
+    {!! Html::script('http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') !!}
+    {!! Html::script('fileinput/js/fileinput.js') !!} 
+
     {!! Html::style( 'css/style.css' ) !!}    
 
 	  <link rel="shortcut icon" type="image/png" href="{{{ asset('favicon.ico') }}}"> 
@@ -108,7 +113,8 @@
             		    @include( 'Layouts.Menus.compras' )
             		    @include( 'Layouts.Menus.ventas' )
 										@include( 'Layouts.Menus.cotizador' )
-            		    @include('Layouts.Menus.acceso')
+            		    @include( 'Layouts.Menus.acceso' )
+                    @include( 'Layouts.Menus.configuracion' )
             
              		    <li>
               			    <a href="#">
